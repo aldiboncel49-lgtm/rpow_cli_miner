@@ -1,0 +1,10 @@
+{
+  "name": "rpow-cli-miner",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node rpow-cli.js mine --count 9999 --engine native --workers 2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
