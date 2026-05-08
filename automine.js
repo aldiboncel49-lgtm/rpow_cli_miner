@@ -11,9 +11,10 @@ const RETRY_DELAY_MS = Number(process.env.RPOW_RETRY_DELAY_MS || 10000);
 const MAX_RETRIES = Number(process.env.RPOW_MAX_RETRIES || 0);
 
 // Inject state dari env var kalau ada
-if (process.env.RPOW_STATE_JSON && !fs.existsSync(STATE_FILE)) {
-  fs.writeFileSync(STATE_FILE, process.env.RPOW_STATE_JSON);
-  console.log("[automine] state injected from RPOW_STATE_JSON");
+if (process.env.RPOW_COOKIE && !fs.existsSync(STATE_FILE)) {
+  const state = { cookies: { rpow_session: process.env.RPOW_COOKIE } };
+  fs.writeFileSync(STATE_FILE, JSON.stringify(state));
+  console.log("[automine] state injected from RPOW_COOKIE");
 }
 
 let attempt = 0;
